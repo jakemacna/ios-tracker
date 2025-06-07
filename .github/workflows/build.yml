@@ -22,7 +22,7 @@ jobs:
           xcodebuild -exportArchive -archivePath ${{github.workspace}}/build/TrackerApp.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath ${{github.workspace}}/build/export
 
       - name: Upload IPA
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: TrackerApp-ipa
           path: build/export/*.ipa
