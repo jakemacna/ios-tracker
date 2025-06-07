@@ -1,4 +1,4 @@
-name: Build iOS App
+name: Build and Export iOS App
 
 on:
   push:
@@ -17,7 +17,7 @@ jobs:
         with:
           xcode-version: '15.2'
 
-      - name: Build with xcodebuild
+      - name: Build and archive
         run: |
           mkdir -p build
           xcodebuild \
@@ -25,5 +25,18 @@ jobs:
             -sdk iphoneos \
             -destination 'generic/platform=iOS' \
             -configuration Release \
-            -derivedDataPath build \
-            clean build
+            -archivePath build/TrackerApp.xcarchive \
+            clean archive
+
+      - name: Export .ipa
+        run: |
+          xcodebuild -exportArchive \
+            -archivePath build/TrackerApp.xcarchive \
+            -exportPath build/export \
+            -exportOptionsPlist ExportOptions.plist
+
+      - name: Upload .ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: TrackerApp.ipa
+          path: build/export/*.ipa
