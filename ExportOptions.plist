@@ -7,7 +7,7 @@
   <string>manual</string>
   <key>provisioningProfiles</key>
   <dict>
-    <key>com.yourcompany.TrackerApp</key>
+    <key>wiappleakmsastop</key>
     <string>account</string>
   </dict>
   <key>teamID</key>
