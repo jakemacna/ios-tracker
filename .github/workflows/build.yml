@@ -16,10 +16,10 @@ jobs:
         with:
           xcode-version: '15.2'
 
-      - name: Build .ipa
-        run: |
-          xcodebuild -scheme TrackerApp -sdk iphoneos -destination 'generic/platform=iOS' -configuration Release archive 
-          xcodebuild -exportArchive -archivePath ${{github.workspace}}/build/TrackerApp.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath ${{github.workspace}}/build/export
+     - name: Archive app
+  run: |
+    mkdir -p build
+    xcodebuild -project TrackerApp.xcodeproj -scheme TrackerApp -sdk iphoneos -destination 'generic/platform=iOS' -configuration Release clean archive -archivePath build/TrackerApp.xcarchive
 
       - name: Upload IPA
         uses: actions/upload-artifact@v4
