@@ -1,1 +1,0 @@
-// This placeholder needs to be replaced by a real .xcodeproj created via Xcode GUI.
