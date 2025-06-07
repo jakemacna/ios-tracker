@@ -18,7 +18,7 @@ jobs:
 
       - name: Build .ipa
         run: |
-          xcodebuild -scheme TrackerApp -sdk iphoneos -destination 'generic/platform=iOS' -configuration Release archive ...
+          xcodebuild -scheme TrackerApp -sdk iphoneos -destination 'generic/platform=iOS' -configuration Release archive 
           xcodebuild -exportArchive -archivePath ${{github.workspace}}/build/TrackerApp.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath ${{github.workspace}}/build/export
 
       - name: Upload IPA
